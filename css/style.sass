@@ -1,0 +1,316 @@
+$black: #000000
+$cardText: #5D5D5D
+$subText: #9F9F9F
+$white: #FFFFFF
+$whiteText: #FBFBFB
+$red: #F16D7F
+$bgcTop: #F1E4E6
+$blackLight: #222222
+$bgcCard: #F8F8F8
+
+*,
+*::before,
+*::after
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    font-family: 'Lato', sans-serif
+    font-size: 14px
+    font-weight: 400
+    line-height: 17px
+
+a
+    text-decoration: none
+    color: inherit
+
+ol, ul
+    list-style-type: none
+
+img
+    display: block
+    max-width: 100%
+
+input
+    outline: none
+
+.center
+    padding-left: calc(50% - 570px)
+    padding-right: calc(50% - 570px)
+
+.header__link, .sale__link, .card__title-link, .add-to-cart-link
+    display: block
+
+.social__link, .link, .card__title
+    transition: all .2s ease
+
+.header
+    height: 75px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background-color: $blackLight
+    &__left
+        display: flex
+        align-items: center
+        gap: 40px
+    &__right
+        display: flex
+        align-items: center
+        gap: 32px
+
+.top
+    display: flex
+    padding-left: calc(50% - 800px)
+    padding-right: calc(50% - 800px)
+    background-color: $bgcTop
+    .top__left
+        width: 50%
+    .top__right
+        width: 50%
+        padding-left: 64px
+        .top__content
+            margin-top: 40%
+            padding-left: 16px
+            border-left: 12px solid $red
+            .top__heading
+                font-weight: 900
+                font-size: 48px
+                line-height: 58px
+                color: $blackLight
+            .top__heading-mini
+                font-weight: bold
+                font-size: 32px
+                line-height: 39px
+                color: $blackLight
+                span
+                    color: $red
+
+.sale
+    padding-top: 64px
+    .sale__content
+        display: flex
+        gap: 30px
+        margin-bottom: 30px
+    .sale__item
+        position: relative
+        .sale__text
+            width: 100%
+            height: 100%
+            position: absolute
+            top: 0
+            left: 0
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            .sale__p
+                font-size: 16px
+                line-height: 19px
+                text-align: center
+                color: $white
+            .sale__heading
+                font-weight: bold
+                font-size: 24px
+                line-height: 29px
+                text-align: center
+                color: $red
+
+.section
+    padding-top: 96px
+    &__heading
+        font-size: 30px
+        line-height: 36px
+        text-align: center
+        color: $blackLight
+    &__p
+        margin-top: 6px
+        margin-bottom: 48px
+        text-align: center
+        color: $subText
+    &__cards
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        margin-bottom: 20px
+        .card
+            width: 360px
+            margin-bottom: 30px
+            background-color: $bgcCard
+            .add-to-cart
+                display: none
+                color: $white
+                &-link
+                    width: 139px
+                    height: 44px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    gap: 11px
+                    border: 1px solid $white
+            .card__img:hover
+                position: relative
+                .add-to-cart
+                    width: 100%
+                    height: 100%
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    position: absolute
+                    top: 0
+                    left: 0
+                    background-color: rgba(58, 56, 56, 0.86)
+            &__box
+                padding: 25px 29px 20px 17px
+                .card__title
+                    font-size: 13px
+                    line-height: 16px
+                    color: $black
+                    &:hover
+                        color: $red
+                .card__text
+                    font-weight: 300
+                    margin-top: 13px
+                    margin-bottom: 18px
+                    color: $cardText
+                .card__price
+                    font-size: 16px
+                    line-height: 19px
+                    color: $red
+    &__link
+        display: flex
+        justify-content: center
+        .link
+            padding: 15px 39px
+            font-size: 16px
+            line-height: 19px
+            border: 1px solid #F26376
+            color: #F26376
+            &:hover
+                color: $white
+                background-color: #F26376
+.footer
+    padding-top: 95px
+    &__up
+        height: 341px
+        display: flex
+        align-items: center
+        justify-content: space-around
+        color: $whiteText
+        background-color: $blackLight
+        .up__item
+            max-width: 316px
+            text-align: center
+            .item__img
+                height: 40px
+            .item__heading
+                font-size: 20px
+                line-height: 24px
+                margin-top: 20px
+                margin-bottom: 16px
+            .item__text
+                font-weight: 300
+    &__middle
+        height: 448px
+        display: flex
+        position: relative
+        &::after
+            content: ''
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+            z-index: -1
+            opacity: .5
+            background-image: url(../img/mid-bg.jpg)
+            background-repeat: no-repeat
+            background-position: center
+            background-size: cover
+        .middle__left
+            width: 50%
+            display: flex
+            justify-content: flex-start
+            padding-top: 97px
+            .left__box
+                max-width: 360px
+                display: flex
+                flex-direction: column
+                align-items: center
+                .middle__text
+                    margin-top: 30px
+                    font-style: italic
+                    font-size: 20px
+                    line-height: 24px
+                    text-align: center
+                    color: $blackLight
+        .middle__right
+            width: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+            .right__box
+                max-width: 356px
+                &-text
+                    font-size: 18px
+                    line-height: 30px
+                    text-align: center
+                    margin-bottom: 25px
+                    color: $blackLight
+                    span
+                        font-weight: bold
+                        font-size: 24px
+                        line-height: 40px
+                .middle__form
+                    position: relative
+                    .middle__input
+                        width: 100%
+                        height: 49px
+                        opacity: 0.67
+                        border: none
+                        border-radius: 23px
+                        padding-left: 22px
+                        padding-right: 128px
+                        color: $blackLight
+                        background-color: #E1E1E1
+                    .middle__button
+                        height: 49px
+                        position: absolute
+                        top: 0
+                        right: 0
+                        cursor: pointer
+                        font-size: 14px
+                        line-height: 17px
+                        border: none
+                        border-radius: 0 23px 23px 0
+                        padding-left: 22px
+                        padding-right: 22px
+                        color: $white
+                        background-color: $red
+    &__bottom
+        height: 79px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        color: $whiteText
+        background-color: $blackLight
+        .copyright
+            font-size: 16px
+            line-height: 19px
+        .bottom__box
+            display: flex
+            gap: 7px
+            .social__link
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 32px
+                height: 32px
+                color: $black
+                background-color: $white
+                &:hover
+                    color: $white
+                    background-color: $red
+                .social
+                    font-size: 16px
