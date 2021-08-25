@@ -7,6 +7,7 @@ $red: #F16D7F
 $bgcTop: #F1E4E6
 $blackLight: #222222
 $bgcCard: #F8F8F8
+$breadcrumbColor: #F8F3F4
 
 *,
 *::before,
@@ -42,7 +43,7 @@ input
 .header__link, .sale__link, .card__title-link, .add-to-cart-link
     display: block
 
-.social__link, .link, .card__title
+.social__link, .link, .card__title, .menu__link
     transition: all .2s ease
 
 .header
@@ -51,14 +52,48 @@ input
     align-items: center
     justify-content: space-between
     background-color: $blackLight
-    &__left
+    &__left, &__right
         display: flex
         align-items: center
         gap: 40px
     &__right
-        display: flex
-        align-items: center
         gap: 32px
+        .right__menu
+            position: relative
+            .menu
+                display: none
+            &:hover
+                .menu
+                    display: flex
+                    flex-direction: column
+                    width: 232px
+                    height: 764px
+                    position: absolute
+                    top: 26px
+                    z-index: 1
+                    padding: 16px 17px 0 34px
+                    background-color: $white
+                    box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
+                    .close__btn
+                        display: flex
+                        justify-content: flex-end
+                        margin-bottom: 9px
+                    .menu__heading
+                        margin-bottom: 24px
+                    &__box
+                        display: flex
+                        flex-direction: column
+                        color: #6F6E6E
+                        .subtitle
+                            margin-bottom: 12px
+                            color: $red
+                        .menu__link
+                            margin-left: 22px
+                            margin-bottom: 11px
+                            &:hover
+                                color: $red
+                        &:not(:last-child)
+                            margin-bottom: 20px
 
 .top
     display: flex
@@ -117,6 +152,27 @@ input
                 text-align: center
                 color: $red
 
+.breadcrumb
+    height: 148px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    color: #636363
+    background-color: $breadcrumbColor
+    &__heading
+        font-weight: normal
+        font-size: 24px
+        line-height: 29px
+        color: $red
+    &__link
+        &:last-of-type
+            font-weight: 700
+            color: $red
+        &:not(:last-child)::after
+            content: '/'
+            display: inline-block
+            margin-left: 3px
+
 .section
     padding-top: 96px
     &__heading
@@ -140,7 +196,6 @@ input
             background-color: $bgcCard
             .add-to-cart
                 display: none
-                color: $white
                 &-link
                     width: 139px
                     height: 44px
@@ -149,6 +204,12 @@ input
                     justify-content: center
                     gap: 11px
                     border: 1px solid $white
+                    color: $white
+                    &:hover
+                        color: $blackLight
+                        background-color: $white
+                        path
+                            fill: $blackLight
             .card__img:hover
                 position: relative
                 .add-to-cart
@@ -190,6 +251,36 @@ input
             &:hover
                 color: $white
                 background-color: #F26376
+
+.section__catalog
+    padding-top: 51px
+    .pagination
+        display: flex
+        justify-content: center
+        &__box
+            width: 284px
+            height: 44px
+            display: flex
+            align-items: center
+            justify-content: center
+            border: 1px solid #EBEBEB
+            .pagination__ul
+                display: flex
+                align-items: center
+                .pagination__list
+                    font-weight: 300
+                    font-size: 16px
+                    line-height: 19px
+                    padding-bottom: 3px
+                    color: #EBEBEB
+                    &:first-of-type, &:last-of-type
+                        padding-bottom: 0
+                    .pagination__span
+                        padding: 10px
+                        color: $red
+                    .pagination__link
+                        padding: 10px
+
 .footer
     padding-top: 95px
     &__up
@@ -310,7 +401,9 @@ input
                 color: $black
                 background-color: $white
                 &:hover
-                    color: $white
                     background-color: $red
-                .social
-                    font-size: 16px
+                    path
+                        fill: $white
+            .instagram
+                path
+                    fill: $black
