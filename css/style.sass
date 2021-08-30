@@ -33,7 +33,7 @@ img
     display: block
     max-width: 100%
 
-summary, button
+summary, button, .middle__button, .slider__btn, .category__checkbox
     cursor: pointer
 
 input
@@ -43,10 +43,12 @@ input
     padding-left: calc(50% - 570px)
     padding-right: calc(50% - 570px)
 
-.header__link, .sale__link, .card__title-link, .add-to-cart-link
+.header__link, .sale__link, .card__title-link, .add-to-cart-link,
+.subline
     display: block
 
-.social__link, .link, .card__title, .menu__link
+.social__link, .link, .card__title, .menu__link, .category__name,
+.description__button
     transition: all .2s ease
 
 .header
@@ -302,6 +304,8 @@ input
             padding-left: 17px
             .category__name
                 margin-bottom: 11px
+                &:hover
+                    color: $red
                 &:first-of-type
                     margin-top: 24px
                 &:last-of-type
@@ -332,7 +336,6 @@ input
             box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
         .category__checkbox
             display: inline-block
-            cursor: pointer
         .category__checkbox:not(:last-child)
             margin-bottom: 6px
         .category__checkbox>input
@@ -391,6 +394,107 @@ input
             color: $red
         .pagination__link
             padding: 10px
+
+.product__file
+    padding-top: 68px
+
+.product__card
+    .product__box
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-top: 11px
+        padding-bottom: 42px
+        border: 1px solid #EAEAEA
+        background-color: #F7F7F7
+        .slider__btn
+            width: 47px
+            height: 47px
+            display: flex
+            align-items: center
+            justify-content: center
+            background-color: rgba(42, 42, 42, 0.15)
+            &:hover
+                path
+                    fill: $red
+    .center
+        transform: translateY(-60px)
+    .product__description
+        padding-top: 65px
+        padding-bottom: 65px
+        display: flex
+        flex-direction: column
+        align-items: center
+        border: 1px solid #EAEAEA
+        background-color: $white
+        .description__top
+            display: flex
+            flex-direction: column
+            align-items: center
+        .description__heading
+            font-weight: 300
+            color: $red
+        .subline
+            width: 63px
+            height: 3px
+            margin-top: 12px
+            margin-bottom: 12px
+            background-color: $red
+        .description__title
+            font-weight: 300
+            font-size: 18px
+            line-height: 22px
+            color: #4D4D4D
+        .description__text
+            max-width: 554px
+            font-weight: 300
+            text-align: center
+            margin-top: 48px
+            margin-bottom: 32px
+            color: #5E5E5E
+        .description__price
+            font-weight: 300
+            font-size: 24px
+            line-height: 29px
+            color: #EF5B70
+        .line
+            width: 641px
+            height: 1px
+            margin-top: 64px
+            margin-bottom: 65px
+            background-color: #EAEAEA
+        .description__sort
+            display: flex
+            gap: 23px
+        .description__summary
+            display: flex
+            align-items: center
+            gap: 9px
+            color: #6F6E6E
+        .description__details[open] 
+            .description__summary
+                color: $red
+                path
+                    fill: $red
+        .description__button
+            width: 212px
+            height: 48px
+            display: flex
+            align-items: center
+            justify-content: center
+            gap: 23px
+            margin-top: 48px
+            font-weight: normal
+            font-size: 16px
+            line-height: 19px
+            color: #F26376
+            border: 1px solid #FF6A6A
+            background-color: $white
+            &:hover
+                color: $white
+                background-color: #FF6A6A
+                path
+                    fill: $white
 
 .footer
     padding-top: 95px
@@ -481,7 +585,6 @@ input
                 position: absolute
                 top: 0
                 right: 0
-                cursor: pointer
                 font-size: 14px
                 line-height: 17px
                 border: none
