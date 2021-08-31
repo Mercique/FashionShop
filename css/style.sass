@@ -33,7 +33,8 @@ img
     display: block
     max-width: 100%
 
-summary, button, .middle__button, .slider__btn, .category__checkbox
+summary, button, .middle__button, .slider__btn, .category__checkbox,
+.registration__label
     cursor: pointer
 
 input
@@ -48,7 +49,8 @@ input
     display: block
 
 .social__link, .link, .card__title, .menu__link, .category__name,
-.description__button, .cart__btn, .shipping__button, .checkout__btn
+.description__button, .cart__btn, .shipping__button, .checkout__btn,
+.registration__btn, .label__span::after
     transition: all .2s ease
 
 .header
@@ -664,6 +666,114 @@ input
                     border-color: $red
                     color: $red
                     background-color: $white
+
+.registration
+    padding-top: 64px
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    &-left
+        width: 360px
+        .registration__form
+            display: flex
+            flex-direction: column
+        .registration__title
+            font-weight: 300
+            font-size: 16px
+            line-height: 19px
+            margin-bottom: 20px
+            color: #222222
+        .registration__text
+            font-weight: 300
+            font-size: 13px
+            line-height: 16px
+            margin-top: 15px
+            margin-bottom: 39px
+            color: #B1B1B1
+        .registration__box-radio
+            margin-top: 31px
+            margin-bottom: 33px
+            display: flex
+            align-items: center
+            gap: 20px
+        .registration__input
+            width: 100%
+            height: 45px
+            padding: 0 17px
+            border: 1px solid #A4A4A4
+            &:not(:last-of-type)
+                margin-bottom: 20px
+            &::placeholder
+                font-weight: 300
+                font-size: 13px
+                line-height: 16px
+                color: #B1B1B1
+        .label__span
+            position: relative
+            padding-left: 27px
+            font-weight: 300
+            font-size: 11px
+            line-height: 13px
+            color: #000000
+            &::before
+                content: ''
+                display: block
+                width: 17px
+                height: 17px
+                position: absolute
+                top: -2px
+                left: 0
+                border: 1px solid #A4A4A4
+                border-radius: 50%
+            &::after
+                content: ''
+                display: block
+                width: 9px
+                height: 9px
+                position: absolute
+                top: 2px
+                left: 4px
+                opacity: 0
+                background-color: $black
+                border-radius: 50%
+        .radio
+            display: none
+            &:checked + .label__span::after
+                opacity: 1
+        .registration__btn
+            display: flex
+            align-items: center
+            justify-content: center
+            gap: 20px
+            padding: 16px 30px
+            border: 1px solid transparent
+            color: $white
+            background-color: $red
+            &:hover
+                border-color: $red
+                color: $red
+                background-color: $white
+                path
+                    fill: $red
+    &-right
+        max-width: 652px
+        color: $black
+        font-weight: 300
+        font-size: 24px
+        line-height: 29px
+        .registration__menu
+            list-style-image: url(../img/rega.svg)
+            list-style-position: inside
+        .registration__heading
+            font-weight: 300
+            font-size: 24px
+            line-height: 29px
+        .registration__subtext
+            margin: 22px 0
+        .menu__list:not(:last-of-type)
+            margin-bottom: 16px
+        .list-text
+            padding-left: 14px
 
 .footer
     padding-top: 95px
