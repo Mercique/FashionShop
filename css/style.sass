@@ -4,10 +4,12 @@ $subText: #9F9F9F
 $white: #FFFFFF
 $whiteText: #FBFBFB
 $red: #F16D7F
+$redsummary: #EF5B70
 $bgcTop: #F1E4E6
 $blackLight: #222222
 $bgcCard: #F8F8F8
 $breadcrumbColor: #F8F3F4
+$detailsText: #6F6E6E
 
 *,
 *::before,
@@ -44,13 +46,15 @@ input
     padding-left: calc(50% - 570px)
     padding-right: calc(50% - 570px)
 
-.header__link, .sale__link, .card__title-link, .add-to-cart-link,
-.subline
+.header__link, .card__title-link, .add-to-cart-link, .subline, 
+.card__add, .sale__link
     display: block
 
-.social__link, .link, .card__title, .menu__link, .category__name,
-.description__button, .cart__btn, .shipping__button, .checkout__btn,
-.registration__btn, .label__span::after
+.social__link, .link, .card__title-link, .card__img, .card__add-link, 
+.menu__link, .category__name, .description__button, .cart__btn, 
+.shipping__button, .checkout__btn, .registration__btn, .label__span::after,
+.sale__img, .filter-rotate svg, .card, .breadcrumbs__link, .pagination__link,
+.slider__btn path
     transition: all .2s ease
 
 .header
@@ -81,7 +85,7 @@ input
             padding: 16px 17px 0 34px
             background-color: $white
             box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
-        .close__btn
+        .close__btn-box
             display: flex
             justify-content: flex-end
             margin-bottom: 9px
@@ -90,7 +94,7 @@ input
         .menu__box
             display: flex
             flex-direction: column
-            color: #6F6E6E
+            color: $detailsText
         .subtitle
             margin-bottom: 12px
             color: $red
@@ -101,6 +105,10 @@ input
                 color: $red
         .menu__box:not(:last-child)
             margin-bottom: 20px
+
+.close__btn
+    border: none
+    background-color: transparent
 
 .top
     display: flex
@@ -136,17 +144,19 @@ input
         gap: 30px
         margin-bottom: 30px
     .sale__item
+        display: inline-block
         position: relative
+        overflow: hidden
+        .sale__img:hover
+            transform: scale(1.1)
         .sale__text
-            width: 100%
-            height: 100%
             position: absolute
-            top: 0
-            left: 0
-            display: flex
-            flex-direction: column
-            justify-content: center
-            align-items: center
+            top: 50%
+            left: 50%
+            z-index: 1
+            transform: translate(-50%, -50%)
+            &:hover + .sale__img
+                transform: scale(1.1)
         .sale__p
             font-size: 16px
             line-height: 19px
@@ -180,7 +190,7 @@ input
         font-size: 14px
         line-height: 17px
         color: #636363
-    .breadcrumbs__list:last-of-type .breadcrumbs__link
+    .breadcrumbs__list:last-of-type .breadcrumbs__link, .breadcrumbs__link:hover
         font-weight: 700
         color: $red
     .breadcrumbs__link
@@ -208,42 +218,38 @@ input
         width: 360px
         margin-bottom: 30px
         background-color: $bgcCard
-        .add-to-cart
+        .card__add-link
             display: none
-        .add-to-cart-link
-            width: 139px
-            height: 44px
-            display: flex
-            align-items: center
-            justify-content: center
-            gap: 11px
-            border: 1px solid $white
-            color: $white
-            &:hover
-                color: $blackLight
-                background-color: $white
-                path
-                    fill: $blackLight
-        .card__img:hover
+        &:hover
             position: relative
-            .add-to-cart
-                width: 100%
-                height: 100%
+            transform: scale(1.05)
+            .card__img
+                filter: brightness(30%)
+            .card__add-link
+                width: 139px
+                height: 44px
                 display: flex
                 align-items: center
                 justify-content: center
+                gap: 11px
                 position: absolute
-                top: 0
-                left: 0
-                background-color: rgba(58, 56, 56, 0.86)
+                top: 188px
+                left: 111px
+                border: 1px solid $white
+                color: $white
+                &:hover
+                    color: $black
+                    background-color: $white
+                    path
+                        fill: $black
         &__box
             padding: 25px 29px 20px 17px
-        .card__title
+        .card__title-link
             font-size: 13px
             line-height: 16px
             color: $black
-        .card__title:hover
-            color: $red
+            &:hover
+                color: $red
         .card__text
             font-weight: 300
             margin-top: 13px
@@ -277,15 +283,16 @@ input
     .details__filter
         position: relative
         z-index: 1
-        &[open]
-            .filter__summary
-                color: #EF5B70
-            svg
-                path
-                    fill: #EF5B70
-        .filter__summary
+        .filter__summary, .filter-rotate
+            display: flex
+            align-items: center
+            gap: 12px
             font-weight: 700
-            color: $black
+            color: $detailsText
+            path
+                fill: $detailsText
+        .filter-rotate
+            font-weight: 400
         .filter__category
             width: 360px
             // height: 531px
@@ -294,7 +301,7 @@ input
             left: -16px
             z-index: -1
             padding: 46px 16px 16px
-            color: #6F6F6F
+            color: $detailsText
             background-color: $white
             box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
         .category__details
@@ -314,62 +321,15 @@ input
                     margin-bottom: 6px
         .category__details[open]
             .category__summary
-                color: #EF5B70
+                color: $redsummary
         .category__summary
             padding: 10px 0 10px 11px
-            border-left: 5px solid #EF5B70
+            border-left: 5px solid $redsummary
             border-bottom: 1px solid #EBEBEB
-            color: #6F6E6E
+            color: $detailsText
     .filter__right
         display: flex
         gap: 28px
-        .details__filter
-            position: relative
-            z-index: 1
-        .right__category
-            width: 80px
-            position: absolute
-            top: 20px
-            left: -15px
-            display: flex
-            flex-direction: column
-            padding: 7px 0 11px 9px
-            background-color: $white
-            box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
-        .category__checkbox
-            display: inline-block
-        .category__checkbox:not(:last-child)
-            margin-bottom: 6px
-        .category__checkbox>input
-            position: absolute
-            z-index: -1
-            opacity: 0
-        .category__checkbox>span
-            display: inline-flex
-            align-items: center
-            user-select: none
-            color: #6F6E6E
-        .category__checkbox>span::before
-            content: ''
-            display: inline-block
-            width: 13px
-            height: 13px
-            border: 1px solid #EBEBEB
-            margin-right: 9px
-            background-repeat: no-repeat
-            background-position: center
-            background-size: 81%
-        .category__checkbox>input:not(:disabled):not(:checked)+span:hover::before
-            border-color: $red
-        .category__checkbox>input:checked+span::before
-            border-color: $red
-            background-color: $red
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e")
-    .filter__summary
-        display: flex
-        align-items: center
-        gap: 12px
-        color: #6F6E6E
     .pagination
         display: flex
         justify-content: center
@@ -396,6 +356,62 @@ input
             color: $red
         .pagination__link
             padding: 10px
+            &:hover
+                color: $red
+
+.details__filter[open], .description__details[open]
+    .filter__summary
+        color: $redsummary
+        path
+            fill: $redsummary
+    .filter-rotate
+        svg
+            transform: rotate(-180deg)
+        path
+            fill: $detailsText
+
+.details__filter
+    position: relative
+    z-index: 1
+    .right__category
+        width: 80px
+        position: absolute
+        top: 20px
+        left: -15px
+        display: flex
+        flex-direction: column
+        padding: 7px 0 11px 9px
+        background-color: $white
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
+        .category__checkbox
+            display: inline-block
+        .category__checkbox:not(:last-child)
+            margin-bottom: 6px
+        .category__checkbox>input
+            position: absolute
+            z-index: -1
+            opacity: 0
+        .category__checkbox>span
+            display: inline-flex
+            align-items: center
+            user-select: none
+            color: $detailsText
+        .category__checkbox>span::before
+            content: ''
+            display: inline-block
+            width: 13px
+            height: 13px
+            border: 1px solid #EBEBEB
+            margin-right: 9px
+            background-repeat: no-repeat
+            background-position: center
+            background-size: 81%
+        .category__checkbox>input:not(:disabled):not(:checked)+span:hover::before
+            border-color: $red
+        .category__checkbox>input:checked+span::before
+            border-color: $red
+            background-color: $red
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e")
 
 .product__file
     padding-top: 68px
@@ -415,6 +431,7 @@ input
             display: flex
             align-items: center
             justify-content: center
+            border: none
             background-color: rgba(42, 42, 42, 0.15)
             &:hover
                 path
@@ -458,7 +475,7 @@ input
             font-weight: 300
             font-size: 24px
             line-height: 29px
-            color: #EF5B70
+            color: $redsummary
         .line
             width: 641px
             height: 1px
@@ -468,16 +485,13 @@ input
         .description__sort
             display: flex
             gap: 23px
-        .description__summary
+        .right__category
+            left: 0
+        .filter-rotate
             display: flex
             align-items: center
             gap: 9px
-            color: #6F6E6E
-        .description__details[open] 
-            .description__summary
-                color: $red
-                path
-                    fill: $red
+            color: $detailsText
         .description__button
             width: 212px
             height: 48px
@@ -530,8 +544,6 @@ input
             width: 18px
             height: 18px
             margin-top: 7px
-            border: none
-            background-color: $white
         .cart__title
             font-weight: normal
             font-size: 24px
