@@ -190,12 +190,14 @@ input
         font-size: 14px
         line-height: 17px
         color: #636363
-    .breadcrumbs__list:last-of-type .breadcrumbs__link, .breadcrumbs__link:hover
+    .breadcrumbs__list:last-of-type .breadcrumbs__link
         font-weight: 700
         color: $red
     .breadcrumbs__link
         font-weight: 300
         color: #636363
+        &:hover
+            color: $red
 
 .section
     padding-top: 96px
@@ -366,9 +368,13 @@ input
             fill: $redsummary
     .filter-rotate
         svg
-            transform: rotate(-180deg)
+            transform: rotate(0)
         path
             fill: $detailsText
+
+.filter-rotate
+    svg
+        transform: rotate(-180deg)
 
 .details__filter
     position: relative

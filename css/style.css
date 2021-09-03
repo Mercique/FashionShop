@@ -290,7 +290,7 @@ input {
   color: #636363;
 }
 
-.head .breadcrumbs__list:last-of-type .breadcrumbs__link, .head .breadcrumbs__link:hover {
+.head .breadcrumbs__list:last-of-type .breadcrumbs__link {
   font-weight: 700;
   color: #F16D7F;
 }
@@ -298,6 +298,10 @@ input {
 .head .breadcrumbs__link {
   font-weight: 300;
   color: #636363;
+}
+
+.head .breadcrumbs__link:hover {
+  color: #F16D7F;
 }
 
 .section {
@@ -599,12 +603,17 @@ input {
 }
 
 .details__filter[open] .filter-rotate svg, .description__details[open] .filter-rotate svg {
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
 
 .details__filter[open] .filter-rotate path, .description__details[open] .filter-rotate path {
   fill: #6F6E6E;
+}
+
+.filter-rotate svg {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 .details__filter {
