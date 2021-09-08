@@ -36,7 +36,7 @@ img
     max-width: 100%
 
 summary, button, .middle__button, .slider__btn, .category__checkbox,
-.registration__label
+.registration__label, .label__switcher, .close__btn
     cursor: pointer
 
 input
@@ -51,11 +51,15 @@ input
     display: block
 
 .social__link, .link, .card__title-link, .card__img, .card__add-link, 
-.menu__link, .category__name, .description__button, .cart__btn, 
-.shipping__button, .checkout__btn, .registration__btn, .label__span::after,
-.sale__img, .filter-rotate svg, .card, .breadcrumbs__link, .pagination__link,
-.slider__btn path
+.category__name, .description__button, .cart__btn, .shipping__button, 
+.checkout__btn, .registration__btn, .label__span::after, .sale__img, 
+.filter-rotate svg, .card, .breadcrumbs__link, .pagination__link,
+.slider__btn path, .menu, .menu__link
     transition: all .2s ease
+
+.wrap
+    position: relative
+    overflow: hidden
 
 .header
     height: 75px
@@ -69,22 +73,18 @@ input
         gap: 40px
     &__right
         gap: 32px
-    .right__menu
-        position: relative
     .menu
-        display: none
-    .right__menu:hover
-        .menu
-            display: flex
-            flex-direction: column
-            width: 232px
-            height: 764px
-            position: absolute
-            top: 26px
-            z-index: 1
-            padding: 16px 17px 0 34px
-            background-color: $white
-            box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
+        display: flex
+        flex-direction: column
+        width: 232px
+        height: 764px
+        position: absolute
+        top: 75px
+        right: -100%
+        z-index: 2
+        padding: 16px 17px 0 34px
+        background-color: $white
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21)
         .close__btn-box
             display: flex
             justify-content: flex-end
@@ -105,6 +105,14 @@ input
                 color: $red
         .menu__box:not(:last-child)
             margin-bottom: 20px
+    #switcher
+        position: absolute
+        visibility: hidden
+        left: -9999999px
+        &:checked ~ .menu
+            right: 0
+    .menu__media-pages
+        display: none
 
 .close__btn
     border: none
@@ -954,6 +962,10 @@ input
         padding-right: 8px
         gap: 16px
 
+    .section__catalog
+        .form__filter
+            padding-left: 30px
+
     .shopping__cart
         padding: 59px 16px 0
 
@@ -1008,7 +1020,7 @@ input
                 margin-top: 32px
                 margin-bottom: 22px
 
-@media (max-width: 767px)
+@media (max-width: 768px)
     .top
         .top__right
             padding-left: 39px
@@ -1044,7 +1056,7 @@ input
         .section__cards
             margin-bottom: 40px
         .form__filter
-            padding-left: 8px
+            padding-left: 24px
             padding-right: 8px
             margin-bottom: 40px
 
@@ -1232,8 +1244,21 @@ input
 
 @media (max-width: 450px)
     .header
+        .menu
+            width: 100%
         .account, .cart
             display: none
+        .menu__media-pages
+            display: block
+            margin-bottom: 30px
+            .media__link
+                display: flex
+                align-items: center
+                gap: 20px
+                path
+                    fill: $black
+                &:not(:last-child)
+                    margin-bottom: 10px
 
     .shopping__cart
         .cart__card
